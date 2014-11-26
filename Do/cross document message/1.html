@@ -1,0 +1,31 @@
+<!-- 此文档放在虚机foo.com, 是iframe的引用页 -->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input placeholder="input your message here!" value="" id="ms"/>
+    <button id="button">Send message</button>
+    <div>Message is: </div>
+    <div id="message"></div>
+    <script>
+        var message = document.getElementById('ms');
+
+        function send() {
+            // 找到顶层window
+            window.top.postMessage(message.value, 'http://bar.com');
+        }
+
+        document.getElementById('button').addEventListener('click', send, false);
+
+        var write = function(event) {
+            document.getElementById('message').innerHTML = event.data;
+        };
+
+        window.addEventListener('message', write, false);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!-- 此文档放在虚机bar.com 是顶层窗口页 -->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <iframe id="iframe" style="width: 300px; height: 300px" src="http://foo.com/1.html">
+
+    </iframe>
+    <button>Send message to 1.html on foo.com</button>
+    <div>Message is: </div>
+    <div id="message"></div>
+    <script>
+        var clickHandler, messageHandler, button;
+
+        button = document.querySelector('button');
+
+        clickHandler = function() {
+            // 找到iframe的window
+            var win = document.getElementById('iframe').contentWindow;
+            win.postMessage('Send a message from two_tabs.html.', 'http://foo.com');
+        };
+
+        button.addEventListener('click', clickHandler, false);
+
+        messageHandler = function(event) {
+            if (event.origin == 'http://foo.com') {
+                document.getElementById('message').innerHTML = event.data;
+            }
+        };
+
+        window.addEventListener('message', messageHandler, false);
+    </script>
+</body>
+</html>
