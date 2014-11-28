@@ -1,10 +1,5 @@
-<?php
-if (isset($_FILES['myFile'])) {
-    // Example:
-    move_uploaded_file($_FILES['myFile']['tmp_name'], "uploads/" . $_FILES['myFile']['name']);
-    exit;
-}
-?><!DOCTYPE html>
+<!-- 这个文件向服务端index.php上传文件 -->
+<!DOCTYPE html>
 <html>
 <head>
     <title>dnd binary upload</title>
@@ -19,7 +14,7 @@ if (isset($_FILES['myFile'])) {
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     // Handle response.
-                    alert(xhr.responseText); // handle response.
+                    alert(xhr.responseText);
                 }
             };
             fd.append('myFile', file);
