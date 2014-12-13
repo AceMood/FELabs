@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>测试异步错误的捕获</title>
+</head>
+<body>
+    <div id="test" style="width: 100px; height: 100px; background-color: red"></div>
+    <script>
+
+        window.onerror = function(e) {
+            alert('onerror handler: ' + e.stack);
+        };
+
+        try {
+            function inherits(sub, sup) {
+                /** @constructor */
+                function TempCtor() {}
+                TempCtor.prototype = sup.prototype;
+                sub.superClass_ = sup.prototype;
+                sub.prototype = new TempCtor();
+                /** @override */
+                sub.prototype.constructor = sub;
+            }
+
+            var CustomError = function(opt_msg) {
+                // 确保有调用堆栈追踪. V8环境下可用captureStackTrace
+                // chrome和node都可以
+                if (Error.captureStackTrace) {
+                    Error.captureStackTrace(this, CustomError);
+                } else {
+                    this.stack = new Error().stack || '';
+                }
+
+                if (opt_msg) {
+                    this.message = String(opt_msg);
+                }
+            };
+            inherits(CustomError, Error);
+
+
+            function bind() {
+                var div = document.getElementById('test');
+                div.onclick = function() {
+                    throw new CustomError('bind click');
+                };
+            }
+
+            function interval() {
+                setTimeout(function() {
+                    throw new CustomError('interval tick');
+                }, 1000);
+            }
+
+            try {
+                bind();
+            } catch (ex) {
+                alert('bind: ' + ex.stack);
+            }
+
+
+            try {
+                interval();
+            } catch (ex) {
+                alert('interval: ' + ex.stack);
+            }
+        } catch (ex) {
+            alert('mostout wrapper: ' + ex.stack);
+        }
+
+
+    </script>
+</body>
+</html>
