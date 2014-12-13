@@ -4,28 +4,56 @@ var path = require('path');
 var resolve = path.resolve;
 
 var depth = 0;
-var curDir = ['.'];
+var whitespace = '  ';
+var curDir = ['.', ''];
+
+var pre = '';
 
 
-function loop(file) {
+function loop(file, index, files) {
 
     // console.log('read: ' + file);
 
-    var stat = fs.lstatSync(curDir + file);
+    var isLastItem = (index === files.length - 1);
+
+    var stat = fs.lstatSync(curDir.join('/') + '/' + file);
 
     if (stat.isDirectory()) {
 
+        pre = '';
+        for(var i = 0; i < depth; i++) {
+            pre += whitespace;
+        }
+        console.info(pre + file + '/');
+
         depth++;
 
-        var dir = curDir.push(file).join('/') + '/';
+        curDir.push(file);
+        var dir = curDir.join('/') + '/';
+
 
         process(fs.readdirSync(dir));
+
+        if (isLastItem) {
+            depth--;
+            curDir.pop();
+        }
 
     }
     else if (stat.isFile()) {
 
+        pre = '';
+        for(var i = 0; i < depth; i++) {
+            pre += whitespace;
+        }
+
         // todo
-        console.info(file);
+        console.info(pre + file);
+
+        if (isLastItem) {
+            depth--;
+            curDir.pop();
+        }
 
     }
 }
