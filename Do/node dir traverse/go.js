@@ -1,33 +1,44 @@
 
 var fs = require('fs');
-
+var path = require('path');
+var resolve = path.resolve;
 
 var depth = 0;
+var curDir = ['.'];
 
 
 function loop(file) {
-    var stat = fs.lstatSync(file);
+
+    // console.log('read: ' + file);
+
+    var stat = fs.lstatSync(curDir + file);
 
     if (stat.isDirectory()) {
 
         depth++;
 
-        fs.readdir(file, function(err, files) {
-            if (err) return;
-            files.forEach(loop);
-        });
+        var dir = curDir.push(file).join('/') + '/';
 
-    } else if (stat.isFile()) {
-        console.log(file + '\n');
+        process(fs.readdirSync(dir));
+
+    }
+    else if (stat.isFile()) {
+
+        // todo
+        console.info(file);
+
     }
 }
 
 
-
-fs.readdir('./', function(err, files) {
-
-    if (err) return;
+function process(files) {
+    if (!files || files.length === 0)
+        return;
 
     files.forEach(loop);
+}
 
-});
+
+// go
+var files = fs.readdirSync('./');
+process(files);
