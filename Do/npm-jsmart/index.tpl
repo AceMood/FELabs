@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-</head>
-<body>
-    Hello, {$name}!
-</body>
-</html>
+{include file="header.tpl" title="My Page Title"}
+Hello, {$name}!
+{include file="footer.tpl"}
