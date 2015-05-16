@@ -13,7 +13,7 @@ function importWidget(widget) {
 
 function readFile(url) {
   var reader = new FileReader();
-  var file = new File([], url);
+  var file = new File(new ArrayBuffer(1024), url);
   return reader.readAsText(file, 'utf8');
 }
 
