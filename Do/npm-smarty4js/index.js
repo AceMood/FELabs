@@ -7,9 +7,13 @@ var Smarty = require('smarty4Js');
 
 // create a smarty object
 var s = new Smarty();
+s.config({
+  left_delimiter: '{{',
+  right_delimiter: '}}'
+});
 
 // get compiler
-var tpl = fs.readFileSync('./index.tpl', {
+var tpl = fs.readFileSync('./templates/index.tpl', {
   encoding: 'utf8'
 });
 var compiler = s.compile(tpl);
@@ -30,13 +34,14 @@ var data = {
   common: {
     id: 35,
     name: 'ben'
-  }
+  },
+  sentence: 'Hello World!'
 };
 var html = compiler.render(data);
 debugger;
 
-var html = s.render(tpl, data);
-debugger;
+//var html = s.render(tpl, data);
+//debugger;
 
 //var html = (new Function('return ' + js)()).render(data);
 

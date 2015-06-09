@@ -1,0 +1,83 @@
+[
+    {
+        "type": "T",
+        "value": "<html>\n<head>\n    <title>"
+    },
+    {
+        "type": "FUNC",
+        "name": "block",
+        "attrs": [
+            {
+                "type": "ATTR",
+                "key": {
+                    "type": "STR",
+                    "value": "name"
+                },
+                "value": {
+                    "type": "STR",
+                    "value": "title"
+                }
+            }
+        ],
+        "block": [
+            {
+                "type": "T",
+                "value": "Default Page Title"
+            }
+        ]
+    },
+    {
+        "type": "T",
+        "value": "</title>\n    <style>\n      div {\n        width:200px;\n      }\n    </style>\n</head>\n<body>\n  <div>City: "
+    },
+    {
+        "type": "VAR",
+        "value": [
+            {
+                "type": "ID",
+                "value": "info"
+            },
+            {
+                "type": "ID",
+                "value": "location",
+                "opt": "."
+            },
+            {
+                "type": "ID",
+                "value": "city",
+                "opt": "."
+            }
+        ]
+    },
+    {
+        "type": "T",
+        "value": "</div>\n\n  <div>Street: "
+    },
+    {
+        "type": "VAR",
+        "value": [
+            {
+                "type": "ID",
+                "value": "info"
+            },
+            {
+                "type": "ID",
+                "value": "location",
+                "opt": "."
+            },
+            {
+                "type": "ID",
+                "value": "street",
+                "opt": "."
+            }
+        ]
+    },
+    {
+        "type": "T",
+        "value": "</div>\n\n  <script src=\"a.js\"></script>\n  <script>\n    var aaa = 1000;\n  </script>\n</body>\n</html>"
+    },
+    {
+        "type": "C",
+        "value": "*smarty4Js*"
+    }
+]
