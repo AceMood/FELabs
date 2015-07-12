@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>document.readyState</title>
+    <script>
+        var msg = '';
+        document.onreadystatechange = function() {
+            msg += document.readyState + '\n';
+            console.log(document.readyState);
+            document.getElementById('msg').innerHTML = msg;
+        };
+
+    </script>
+</head>
+<body>
+    <div id="msg"></div>
+    <p>
+        <a href="https://html.spec.whatwg.org/multipage/dom.html#current-document-readiness">w3c标准</a>说明文档
+        指出初始化时document.readyState置为loading状态，随着dom树解析完成这个值变为interactive，这时候子资源可能还未下载完成。当子资源
+        下载完成当前值会被设置成complete。
+    </p>
+</body>
+</html>

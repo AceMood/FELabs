@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function log(msg) {
+            var id = document.currentScript.id;
+            document.getElementById('msg').innerHTML += msg + id + '<br/>';
+        }
+    </script>
+</head>
+<body>
+    <div id="msg">
+
+    </div>
+    <script id="b">
+        function b() {
+            log('current script in executing function b is: ');
+        }
+    </script>
+    <script id="a">
+        function a() {
+            b();
+            log('current script in executing function a is: ');
+        }
+        a();
+    </script>
+    <p>
+        <a href="https://html.spec.whatwg.org/multipage/dom.html#dom-document-currentscript">标准的说法</a>是：如果script
+        执行过程中有再次进入某script节点的情况，currentScript会返回开始执行但未完成执行的script中最近开始的script代码块；而且对于
+        事件绑定，异步处理等等都会受到影响。比如执行的函数段或者注册事件处理器的代码块之前已经执行完毕，则不会被返回，相反会返回当前执行
+        的script代码块，此时很可能是null。
+    </p>
+</body>
+</html>
