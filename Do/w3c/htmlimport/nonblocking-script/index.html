@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HTML Import Spec</title>
+</head>
+<body>
+<script>
+    debugger
+</script>
+<script>
+    /**
+     * 下列代码会先于child document的script执行
+     */
+    alert('parent document before child doc a import');
+</script>
+<link href="nonblocking.html" rel="import" async="true" />
+<div style="width: 100px; height: 100px; background: #ff0000">
+
+</div>
+<script>
+    /**
+     * 下列代码会晚于child document的script执行，
+     * 测试是否被child doc的script执行阻塞
+     */
+    alert('parent document after child a import');
+</script>
+</body>
+</html>
