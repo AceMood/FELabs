@@ -17,7 +17,7 @@
         };
         alert(Global.name + 'before child doc a import');
     </script>
-    <link href="../child-a.html" rel="import" />
+    <link href="child-a.html" rel="import" />
     <div style="width: 100px; height: 100px; background: #ff0000">
 
     </div>
@@ -37,7 +37,7 @@
         Global.name = 'parent document before child b import';
         alert(Global.name);
     </script>
-    <link href="../child-b.html" rel="import" />
+    <link href="child-b.html" rel="import" />
     <script>
         /**
          * 下列代码会晚于child document的script执行，
