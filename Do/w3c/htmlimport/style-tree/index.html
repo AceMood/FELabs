@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HTML Import Spec</title>
+    <style>
+        .block1 {
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+        div.block2 {
+            width: 100px;
+            height: 100px;
+            background: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="block1"></div>
+    <div class="block2"></div>
+    <!--
+        测试是否imported document中的样式会对parent document的
+        产生效果和依赖权重互相覆盖
+    -->
+    <link rel="import" href="over.html" />
+</body>
+</html>
