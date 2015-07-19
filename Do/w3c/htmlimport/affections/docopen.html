@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <link rel="import" href="docopen.html" />
+    <script>
+        // 一些对于document接口的影响，见：
+        // http://w3c.github.io/webcomponents/spec/imports/#interface-document
+
+        var link = document.querySelector('link');
+        var innerDoc = link.import;
+        try {
+            innerDoc.open('http://www.baidu.com');
+            console.log('open successfully');
+        } catch (ex) {
+            // 触发两次？todo
+            console.log('open failed, ', ex.message);
+        }
+    </script>
+</body>
+</html>
