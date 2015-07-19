@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>table elements</title>
+    <style>
+        table, td {
+            border-collapse: separate;
+            border: solid 1px #666;
+        }
+        td {
+            width: 100px;
+            line-height: 30px;
+            background: yellowgreen;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <colgroup>
+        <col span="2"><col valign="top"><col valign="bottom">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>第一列</th><th>第二列</th><th>第三列</th><th>第四列</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+        </tr>
+        <tr>
+            <td>5</td><td>6</td><td>7</td><td>8</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
