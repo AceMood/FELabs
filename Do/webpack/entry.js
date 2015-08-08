@@ -1,3 +1,1 @@
-/**
- * Created by acemood on 15-8-9.
- */
+document.write(require("./content.js"));
