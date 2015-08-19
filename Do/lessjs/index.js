@@ -11,7 +11,7 @@ var cssText_1 = fs.readFileSync('./other.less', {
 });
 
 
-var cssText = cssText_0 + '\n' + cssText_1;
+var cssText = cssText_0 + cssText_1;
 
 fs.writeFileSync('full.less', cssText);
 
