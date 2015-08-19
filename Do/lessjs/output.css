@@ -10,3 +10,6 @@ div.b {
 #header {
   color: #6c94be;
 }
+div.other {
+  line-height: 200%;
+}
