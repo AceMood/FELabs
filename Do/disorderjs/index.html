@@ -8,7 +8,7 @@
     <button onclick="add();">add script to dom</button>
     <script>
         function add () {
-            var urls = ['./a,js', './b.js'];
+            var urls = ['./a.js', './b.js'];
             var $head = document.head || document.getElementsByTagName('head')[0];
             for (var n = 0; n < urls.length; ++n) {
                 var script_1 = document.createElement('script');
