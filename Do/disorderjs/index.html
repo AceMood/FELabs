@@ -6,6 +6,7 @@
 </head>
 <body>
     <button onclick="add();">add script to dom</button>
+    <button onclick="add1();"></button>
     <script>
         function add () {
             var urls = ['./a.js', './b.js'];
@@ -13,6 +14,17 @@
             for (var n = 0; n < urls.length; ++n) {
                 var script_1 = document.createElement('script');
                 script_1.src = urls[n];
+                $head.appendChild(script_1);
+            }
+        }
+
+        function add1 () {
+            var urls = ['./a.js', './b.js'];
+            var $head = document.head || document.getElementsByTagName('head')[0];
+            for (var n = 0; n < urls.length; ++n) {
+                var script_1 = document.createElement('script');
+                script_1.src = urls[n];
+                script_1.async = true;
                 $head.appendChild(script_1);
             }
         }
