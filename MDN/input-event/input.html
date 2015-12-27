@@ -3,8 +3,28 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        input, textarea {
+            width: 200px;
+            line-height: 40px;
+            border: solid 2px #ccc;
+            border-radius: 2px;
+        }
+    </style>
 </head>
 <body>
-
+    <script>
+        function oninput() {
+            alert(this.val);
+        }
+    </script>
+    <input type="text" id="text" placeholder="change the text here!"/><br/>
+    <textarea id="ta" placeholder="change the text here!"></textarea>
+    <script>
+        var text = document.getElementById('text');
+        var ta = document.getElementById('ta');
+        text.oninput = oninput.bind(text);
+        ta.oninput = oninput.bind(ta);
+    </script>
 </body>
 </html>
